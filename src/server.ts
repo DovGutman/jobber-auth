@@ -10,7 +10,7 @@ import helmet from 'helmet';
 import cors from 'cors';
 import { verify } from 'jsonwebtoken';
 import compression from 'compression';
-import { checkConnection } from '@/elasticsearch';
+import { checkConnection, createIndex } from '@/elasticsearch';
 import { appRoutes } from '@/routes';
 import { Channel } from 'amqplib';
 import { createConnection } from '@/queues/connection';
@@ -67,7 +67,7 @@ async function startQueues(): Promise<void> {
 
 function startElasticSearch(): void {
   checkConnection();
-  // createIndex('gigs');
+  createIndex('gigs');
 }
 
 function authErrorHandler(app: Application): void {
