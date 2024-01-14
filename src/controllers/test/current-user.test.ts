@@ -5,9 +5,9 @@ import * as helper from '@dovgutman/jobber-shared';
 import { Sequelize } from 'sequelize';
 import { authMock, authMockRequest, authMockResponse, authUserPayload } from './mock/auth.mock';
 
-jest.mock('@uzochukwueddie/jobber-shared');
-jest.mock('@auth/services/auth.service');
-jest.mock('@auth/queues/auth.producer');
+jest.mock('@dovgutman/jobber-shared');
+jest.mock('@/services/auth.service');
+jest.mock('@/queues/auth.producer');
 jest.mock('@elastic/elasticsearch');
 
 const USERNAME = 'Manny';
@@ -18,7 +18,7 @@ let mockConnection: Sequelize;
 describe('CurrentUser', () => {
   beforeEach(async () => {
     jest.resetAllMocks();
-    mockConnection = new Sequelize(process.env.MYSQL_DB!,  {
+    mockConnection = new Sequelize(process.env.MYSQL_DB!, {
       dialect: 'mysql',
       logging: false,
       dialectOptions: {
